@@ -1,10 +1,8 @@
-
 #include "header.h"
 
 int main(int argc, char **argv) {
     if (argc == 1) {
-        std::cerr << "Enter the \"--forward\" or \"--reverse\"flag first. And if you want to read from the file \"--file\"."<<"\n";
-        return EXIT_FAILURE;
+        assert(!(argc==1) && "Enter the \"--forward\" or \"--reverse\"flag first. And if you want to read from the file \"--file\".");
     } else if (strcmp(argv[1], "--forward") == 0) {
         char *arr = new char[200];
         int counter = 0;
@@ -19,8 +17,8 @@ int main(int argc, char **argv) {
                 cout << "Answer: " << Direct(arr, counter) << std::endl;
                 file.close();
             } else {
-                cout << "ERROR: file is not open" << std::endl;
                 file.close();
+                assert(0 && "ERROR: file is not open");
             }
         } else if (argc == 2) {
             cout << "Enter an expression. For example \"5 + 5 * 100\"" << "\n";
@@ -49,8 +47,8 @@ int main(int argc, char **argv) {
                 cout << "Answer: " << postFix(arr, counter) << std::endl;
                 file.close();
             } else {
-                cout << "ERROR: file is not open" << std::endl;
                 file.close();
+                assert(0 && "ERROR: file is not open");
             }
         } else if (argc == 2) {
             cout << "Enter an expression. For example \"1 2 + 4 × 3 +\"" << "\n";
@@ -66,7 +64,7 @@ int main(int argc, char **argv) {
         delete[] arr;
         return 0;
     } else {
-        std::cerr << "Enter the \"--forward\" or \"--reverse\"flag first. And if you want to read from the file \"--file\"."<<"\n";
+        assert(0 && "Enter the \"--forward\" or \"--reverse\"flag first. And if you want to read from the file \"--file\".");
         return EXIT_FAILURE;
     }
 }
