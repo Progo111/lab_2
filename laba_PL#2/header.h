@@ -9,9 +9,12 @@
 #include <cstring>
 #include <cmath>
 #include "fstream"
+#include "gtest/gtest.h"
+#include "gmock/gmock.h"
 
 using std::cout;
 using std::cin;
+using std::endl;
 
 int Intenger(const char *);
 

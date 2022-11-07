@@ -15,3 +15,11 @@ func.0: func.cpp
 
 clear:
 	rm $(PROJECT) *.o
+
+
+
+test: test.cpp func.cpp
+	$(CC) test.cpp func.cpp -o test -lgtest -lgmock -pthread
+
+clean:
+	rm test

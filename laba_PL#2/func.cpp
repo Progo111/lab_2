@@ -62,7 +62,6 @@ bool isChar(char *arr) {
     if (strcmp(arr, "A") < 0) {
         return false;
     }
-    assert(false);
     return true;
 }
 
@@ -77,9 +76,8 @@ int Direct(char *arr, int &counter) {
         i++;
         char *used = element(arr, counter);
         if (isChar(used)) {
-            assert(!isChar(used));
-//            std::cerr << "ERROR_input_char";
-//            return EXIT_FAILURE;
+            std::cerr << "ERROR_input_char";
+            return EXIT_FAILURE;
         } else if (isSign(used) == 0) {
             number_index++;
             number[number_index] = Intenger(used);
@@ -91,9 +89,9 @@ int Direct(char *arr, int &counter) {
             if (isSign(used) == 3) {
                 flag_1 = true;
             } else if (isSign(used) == -3) {
-                assert(!(isSign(used) == -3));
-//                std::cerr << "ERROR";
-//                return EXIT_FAILURE;
+                std::cerr << "ERROR";
+                return EXIT_FAILURE;
+
             }
         } else if (isSign(used) == 3) {
             sign_index++;
@@ -116,7 +114,6 @@ int Direct(char *arr, int &counter) {
                     sign_index++;
                     sign[sign_index] = isSign(used);
                 } else {
-                    assert(0);
                     std::cerr << "ERROR";
                     return EXIT_FAILURE;
                 }
@@ -157,6 +154,7 @@ int Direct(char *arr, int &counter) {
             } else {
                 int exRes = 0;
                 while (abs(sign[sign_index]) >= abs(isSign(used)) && sign_index != -1 && abs(sign[sign_index]) != 3) {
+                    //cout<<i<<std::endl;
                     if (sign[sign_index] == 2) {
                         exRes = number[number_index - 1] * number[number_index];
                         sign_index--;
@@ -222,9 +220,8 @@ int postFix(char *arr, int &counter) {
         i++;
         char *used = element(arr, counter);
         if (isChar(used)) {
-            assert(!isChar(used));
-//            std::cerr << "ERROR_input_char";
-//            return EXIT_FAILURE;
+            std::cerr << "ERROR_input_char";
+            return EXIT_FAILURE;
         } else if (isSign(used) == 0) {
             number_index++;
             number[number_index] = Intenger(used);
@@ -233,13 +230,12 @@ int postFix(char *arr, int &counter) {
             sign_index++;
             sign[sign_index] = isSign(used);
             if (isSign(used) == 3) {
-                assert(!(isSign(used) == 3));
-//                std::cerr << "ERROR";
-//                return EXIT_FAILURE;
+                flag_1 = true;
+                std::cerr << "ERROR";
+                return EXIT_FAILURE;
             } else if (isSign(used) == -3) {
-                assert(!(isSign(used) == -3));
-//                std::cerr << "ERROR";
-//                return EXIT_FAILURE;
+                std::cerr << "ERROR";
+                return EXIT_FAILURE;
 
             }
         } else if (isSign(used) == 3) {
@@ -262,9 +258,8 @@ int postFix(char *arr, int &counter) {
                     sign_index++;
                     sign[sign_index] = isSign(used);
                 } else {
-                    assert(0);
-//                    std::cerr << "ERROR";
-//                    return EXIT_FAILURE;
+                    std::cerr << "ERROR";
+                    return EXIT_FAILURE;
                 }
             }
         } else if (isSign(used) == -3) {
